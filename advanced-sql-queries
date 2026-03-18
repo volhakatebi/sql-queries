@@ -1,0 +1,25 @@
+SELECT COUNT(city), city
+FROM
+(SELECT * FROM customer c
+LEFT JOIN address a 
+ON c.address_id = a.address_id
+LEFT JOIN city ct
+ON a.city_id = ct.city_id
+LEFT JOIN customer_spendings sp
+ON c.customer_id = sp.customer_id)
+GROUP BY city
+ORDER BY count desc
+
+
+SELECT SUM(sum), city || ', ' || country AS place
+FROM customer c
+LEFT JOIN address a 
+ON c.address_id = a.address_id
+LEFT JOIN city ct
+ON a.city_id = ct.city_id
+LEFT JOIN customer_spendings sp
+ON c.customer_id = sp.customer_id
+LEFT JOIN country cn
+ON ct.country_id = cn.country_id
+GROUP BY city || ', ' || country 
+ORDER BY sum asc
