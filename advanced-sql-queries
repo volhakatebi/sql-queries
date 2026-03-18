@@ -1,4 +1,4 @@
--- Some SQL Query Examples for Joins and Subqueries
+-- Some SQL Query Examples for Joins and Correlated and Uncorrelated Subqueries 
 
 
 SELECT COUNT(city), city
