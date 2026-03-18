@@ -35,3 +35,11 @@ staff_id, customer_id
 FROM payment
 GROUP BY staff_id, customer_id)
 GROUP BY staff_id
+
+SELECT ROUND(AVG(total),2) AS mean, weekday
+FROM
+(SELECT SUM(amount) AS total, DATE(payment_date), TO_CHAR(payment_date, 'Day') AS weekday
+FROM payment
+GROUP BY DATE(payment_date),TO_CHAR(payment_date, 'Day'))
+GROUP BY weekday
+ORDER BY mean DESC
